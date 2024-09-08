@@ -1,6 +1,7 @@
 FROM python:3.11-slim AS build
-COPY requirements.txt requirements.txt
 RUN pip install --upgrade setuptools 
+RUN python -m pip install --upgrade setuptools 
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 FROM python:3.11-slim
