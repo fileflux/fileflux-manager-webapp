@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     nano \
     dos2unix \
     procps 
-RUN pip install --upgrade pip && setuptools 
+RUN pip install --upgrade pip setuptools 
 COPY --from=build /usr/local /usr/local
 WORKDIR /app
 COPY . .
