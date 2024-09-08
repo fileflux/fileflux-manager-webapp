@@ -1,6 +1,6 @@
 FROM python:3.11-slim AS build
 COPY requirements.txt requirements.txt
-RUN pip install --upgrade pip && pip install setuptools>=70.0.0
+RUN pip install --upgrade pip && pip uninstall -y setuptools && pip install setuptools>=70.0.0
 RUN pip install -r requirements.txt
 
 FROM python:3.11-slim

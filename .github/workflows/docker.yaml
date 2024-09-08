@@ -33,7 +33,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/s3manager:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/s3manager:${{ github.sha }}
 
       - name: Scan Docker Image with Trivy
         uses: aquasecurity/trivy-action@master
