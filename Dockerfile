@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y \
     nano \
     dos2unix \
     procps 
-RUN pip install --upgrade pip setuptools 
+RUN pip install --upgrade pip setuptools>=70.0.0 
+RUN python -m pip install setuptools>=70.0.0
 COPY --from=build /usr/local /usr/local
 WORKDIR /app
 COPY . .
