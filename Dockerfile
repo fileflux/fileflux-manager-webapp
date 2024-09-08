@@ -1,6 +1,4 @@
 FROM python:3.11-slim AS build
-RUN pip install --upgrade setuptools 
-RUN python -m pip install --upgrade setuptools 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
@@ -10,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     nano \
     dos2unix \
     procps 
+RUN pip install --upgrade pip && setuptools 
 COPY --from=build /usr/local /usr/local
 WORKDIR /app
 COPY . .
