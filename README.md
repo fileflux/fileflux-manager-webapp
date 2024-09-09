@@ -1,13 +1,13 @@
 # FileFlux Manager Web Application
 
 ## Overview
-This is a main Python Flask-based web application designed receive, process and save files from the end users. The application is designed to be deployed in a Kubernetes cluster and uses a CockroachDB Cluster as the backend database for storing information and uses ZFS pools across various Kubernetes worker nodes to store the end-user files.
+This is a main Python Flask-based web application designed receive, process and save files from the end users. The application is designed to be deployed in a Kubernetes cluster and uses a CockroachDB Cluster as the backend database for storing information and uses ZFS pools across various Kubernetes worker nodes to store the end-user files. Note that this is the manager application that interacts with the FileFlux Worker Web Application. While the manager receives files from end users and interacts with the CockroachDB Cluster to store some information and forwards user requests to the worker application, the actual processing of files is done by the worker application, using the ZFS pools on various worker nodes in conjunction with the CockroachDB Cluster and it will not work as a standalone application.
 
 ## Features
 - Allows users to create accounts, create and delete buckets for storing files, upload, access and delete files in their buckets, subject to proper authentication and authorization, leveraging various different methods such as PUT, GET, DELETE, HEAD, POST etc.
 - Creates CockroachDB schema for storing user details, bucket details, file details, etc.
 - Interacts with CockroachDB Cluster to save various information like user details, bucket details, file details, location on the worker nodes etc.
-- Interacts with FileFlux Worker to perform various actions, in conjunction with ZFS pools across various Kubernetes worker nodes.
+- Interacts with FileFlux Worker to perform various actions via various Kubernetes services.
 - Includes custom readiness and liveness probes for Kubernetes to ensure high availability.
 - GitHub Actions CI/CD workflow to build a multi-platform container image and push it to DockerHub.
 - Integrated security scanning of the container image using Trivy.
